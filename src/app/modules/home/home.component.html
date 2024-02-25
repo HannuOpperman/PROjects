@@ -1,0 +1,129 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">PROjects</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- Home -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <!-- Name -->
+            <a class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+                Suspicious dropdown
+            </a>
+          <!-- Options -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-item">Fake</div>
+            <div class="dropdown-item">Buttons</div>
+            <div class="dropdown-item">Really?</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item">Fake too...</div>
+          </div>
+        </li>
+
+        <!-- Search Bar -->
+        <li style="padding-left: 100px;">
+          <div class="dropdown">
+            
+            <!-- Search input -->  
+            <input
+              class="form-control"
+              [(ngModel)]="searchText"
+              [ngClass]="searchBoxClass"
+              data-toggle="dropdown"
+              id="dropdownMenuButton"
+              type="search"
+              aria-haspopup="true"
+              aria-expanded="false"
+              placeholder="Search Projects"
+              (keyup)="keyPressed($event)"
+              aria-label="Search">
+              
+              <!-- Search Results -->
+              <div
+                *ngIf="searchResultList && searchResultList.length > 0"
+                class="dropdown-menu"
+                style="width: fit-content; padding: 0;"
+                aria-labelledby="dropdownMenuButton">
+                
+                <div
+                  *ngFor="let searchResult of searchResultList; let i = index">
+                  
+                  <div
+                    class="container dropdown-item no-padding"
+                    [style]="i === highlightedItem ? 'border: 1px solid black; border-radius: 5px;' : ''"
+                    (click)="openLink(searchResult.url)"
+                    *ngIf="!searchText || checkProject(searchResult)">
+                    <!-- Project Card -->
+                    <div class="container">
+                      <div class="row">
+                    
+                        <!-- Image -->
+                        <div class="col-sm-3" style="padding-left:0; margin:auto;">
+                          <img height="30" [src]="searchResult.image.link">
+                        </div>
+                    
+                        <!-- Project Text -->
+                        <div class="col-sm-9">
+                          
+                          <!-- Project Name -->
+                          <div class="row" style="background-color: aqua;">
+                            <strong>
+                              <div
+                                (click)="openLink(searchResult.url)"
+                                [innerHtml]="searchResult.name | highlightSearchText: searchText">
+                              </div>
+                            </strong>
+                          </div>
+
+                          <!-- Groups -->
+                          <div class="row">
+                            <div class="col">
+                              <div
+                                *ngFor="let projectGroup of searchResult.groups; let j = index"
+                                class="row">
+                                <div
+                                  [style]="i === highlightedItem && j === highlightedSubItem ? 'border: 1px solid black; border-radius: 5px;' : ''"
+                                  (click)="openLink(projectGroup.url)"
+                                  *ngIf="!searchText || checkGroup(projectGroup.name)"
+                                  [innerHtml]="projectGroup.name | highlightSearchText: searchText">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+  
+              <!-- No Data Message -->
+              <div
+                *ngIf="!searchResultList || searchResultList.length === 0"
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton">
+                
+                  <div class="dropdown-item">No results for the search text entered</div>
+              </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<div>
+  <img src="https://i.imgur.com/uJvYEd4.gif">
+</div>
+
