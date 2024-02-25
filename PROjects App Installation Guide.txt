@@ -1,0 +1,16 @@
+PROjects Installation Guide
+This document will serve as the guide on how to install the PROjects app.
+
+1. Clone the repository down to your computer - https://github.com/HannuOpperman/PROjects.git
+2. Navigate into the folder and run this command to install all the required external packages - npm install
+3. Start the app by running the following command - ng serve
+
+Additional Frontend Notes:
+The frontend app will be hosted on localhost:4200 by default
+
+You should be ready to go now.
+
+If you experience any issues with the installation feel free to contact me on:
+oppermanhannu@gmail.com or hoppies@live.co.za
+
+Hannu Opperman
