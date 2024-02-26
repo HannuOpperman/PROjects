@@ -1,7 +1,17 @@
 PROjects Installation Guide
 This document will serve as the guide on how to install the PROjects app.
 
-1. Clone the repository down to your computer - https://github.com/HannuOpperman/PROjects.git
+Backend:
+1. Clone the repository down to your computer - https://github.com/HannuOpperman/PROjectsBackend.git (main branch)
+2. Navigate into the folder and run this command to install all the required external packages - npm install
+3. Start the app by running the following command - node app.js
+
+I suggest completing this step before moving on.
+The backend app will be hosted on localhost:3000 by default, if you change this in the TODO's you need to update the frontend too at the TODO's
+
+
+Frontend:
+1. Clone the repository down to your computer - https://github.com/HannuOpperman/PROjects.git (master branch)
 2. Navigate into the folder and run this command to install all the required external packages - npm install
 3. Start the app by running the following command - ng serve
 
