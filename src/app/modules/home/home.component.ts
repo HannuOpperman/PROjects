@@ -79,7 +79,8 @@ export class HomeComponent {
   }
 
   preparePageData() {
-    this.http.get('../assets/data.js', { responseType: 'text' }).subscribe(data2 => { 
+    this.http.get('http://localhost:3000/projects', { responseType: 'text' }).subscribe(data2 => {
+      debugger;
       let splitData = data2.split(' = ');
       this.originalProjectsList = JSON.parse(splitData[1]);
       this.searchResultList = JSON.parse(splitData[1]);
